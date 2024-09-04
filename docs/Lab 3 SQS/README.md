@@ -7,7 +7,7 @@ For a visual guide on this process, you can watch the video [here](https://hitoh
 1. Open the AWS Console, search for SQS, and click on Simple Queue Service (SQS).
 2. Click on **Create Queue**.
 3. Give a name to your queue.
-    ![Name of Queue Image](/Lab%203%20SQS/img/sqs-name.png)
+    ![Name of Queue Image](/docs/Lab%203%20SQS/img/sqs-name.png)
 4. Scroll down and click **Create Queue**.
 
 #### 2. Launch an EC2 Instance
@@ -15,11 +15,11 @@ For a visual guide on this process, you can watch the video [here](https://hitoh
 1. Search for EC2 and click on **Launch Instance**.
 2. Give a name to your EC2 instance.
    - For AMI, select Ubuntu, and in the dropdown, select Ubuntu 22.04.
-    ![Ubuntu 22.04 AMI Selection](/Lab%203%20SQS/img/ubuntu22.04-ami.png)
+    ![Ubuntu 22.04 AMI Selection](/docs/Lab%203%20SQS/img/ubuntu22.04-ami.png)
 3. Create a key pair and save it.
 4. In the Network section, click on **Edit** and select **Auto-assign IP**. Enable it and click **Add**.
 5. Click on **Add Security Group Rule** in the Inbound Security Group Rules subsection of network settings.
-    ![EC2 Security Group Rule](/Lab%203%20SQS/img/sg-rule.png)
+    ![EC2 Security Group Rule](/docs/Lab%203%20SQS/img/sg-rule.png)
 6. Click on **Launch Instance**.
 
 #### 3. Create an IAM Role
@@ -29,12 +29,12 @@ For a visual guide on this process, you can watch the video [here](https://hitoh
 3. Click on **Create Role**.
 4. In the **Select trusted entity** section, choose **AWS Service** and select **EC2** in the use case.
 5. Click **Next**, then search for the `sqsfullaccess` policy and select it.
-    ![SQS-FullAccess Policy Image](/Lab%203%20SQS/img/sqs-fullaccess-policy.png)
+    ![SQS-FullAccess Policy Image](/docs/Lab%203%20SQS/img/sqs-fullaccess-policy.png)
 6. Click **Next**, give a name to the role, and click **Create Role**.
 7. After creating the role successfully, navigate back to your previously created EC2 instance.
 8. Click on **Actions**, select **Security**, then **Modify IAM Role**.
 9. Select the role you just created.
-  ![Modify IAM Role EC2 Image](/Lab%203%20SQS/img/modfy-iam-role-ec2.png)
+  ![Modify IAM Role EC2 Image](/docs/Lab%203%20SQS/img/modfy-iam-role-ec2.png)
 10. Click **Update IAM Role**.
 
 #### 4. Connect to the EC2 Instance
