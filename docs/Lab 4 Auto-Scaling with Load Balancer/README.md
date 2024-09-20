@@ -33,7 +33,7 @@
   - **User Data:** (Mark as Optional)
     ```bash
     #!/bin/bash
-    sudo apt update -y && sudo apt upgrade -y && sudo apt install httpd -y && sudo systemctl start httpd && sudo systemctl enable httpd && echo "<h1>This Message is from ${hostname -i}</h1>" > /var/www/html/index.html
+    sudo apt update -y && sudo apt upgrade -y && sudo apt install apache2 -y && sudo systemctl start apache2 && sudo systemctl enable apache2 && echo "<h1>This Message is from $(hostname -i)</h1>" > /var/www/html/index.html
     ```
   - Click **Create Launch Template**
 - Go back to **Auto Scaling Configuration**, select our **Launch Template**, scroll down, then click on **Next**
