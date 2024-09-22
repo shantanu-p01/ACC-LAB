@@ -1,33 +1,33 @@
-## Lab 1: CloudWatch + Lambda + SNS 
+## Lab 1: CloudWatch + Lambda + SNS
 
-Configuring CloudWatch Alarm for Lambda Invocation Errors with SNS Notifications
+**Configuring CloudWatch Alarm for Lambda Invocation Errors with SNS Notifications**
 
-This guide walks through setting up a **CloudWatch Alarm** to monitor AWS Lambda errors and notify you via **SNS (Simple Notification Service)** when the threshold is exceeded. The notification will be sent to an email address of your choice.
+This guide walks you through setting up a **CloudWatch Alarm** to monitor AWS Lambda errors and notify you via **SNS (Simple Notification Service)** when the threshold is exceeded. Notifications will be sent to an email address of your choice.
 
 ---
 
 ### Step 1: Create a Lambda Function
 
-1. **Go to the Lambda Service** in the AWS Management Console.
+1. Go to the **Lambda Service** in the AWS Management Console.
 2. Click **Create Function**.
 3. Select **Author from Scratch**.
 4. Enter a **function name**.
 5. Set the **runtime** to **Node.js 20**.
 6. Click **Create Function** to finish.
 
+![Lambda Function Creation](/docs/Lab%201%20CloudWatch%20+%20SNS/img/lambdaFunctionCreation.png)
 
-!['Lambda Function'](/docs/Lab%201%20CloudWatch%20+%20SNS/img/lambdaFunctionCreation.png)
 ---
 
 ### Step 2: Monitor Lambda Metrics
 
 1. After the function is created, navigate to your Lambda function.
 2. Select the **Monitor** tab, then click on the **Metrics** sub-tab.
-3. You will see metrics like **Error Count** and **Success Rate (%)**. 
+3. You will see metrics like **Error Count** and **Success Rate (%)**.
 
-    These metrics will allow us to set up an alarm that triggers when the error count exceeds a certain threshold.
+These metrics will allow us to set up an alarm that triggers when the error count exceeds a certain threshold.
 
-!['Lambda Function Monitor Error Count'](/docs/Lab%201%20CloudWatch%20+%20SNS/img/lambdaFunctionMonitorErrorCount.png)
+![Lambda Function Monitor Error Count](/docs/Lab%201%20CloudWatch%20+%20SNS/img/lambdaFunctionMonitorErrorCount.png)
 
 ---
 
@@ -40,7 +40,7 @@ This guide walks through setting up a **CloudWatch Alarm** to monitor AWS Lambda
 5. Enter a **name** for the topic.
 6. Click **Create Topic**.
 
-!['SNS Topic Creation'](/docs/Lab%201%20CloudWatch%20+%20SNS/img/SNSTopicCreation.png)
+![SNS Topic Creation](/docs/Lab%201%20CloudWatch%20+%20SNS/img/SNSTopicCreation.png)
 
 ---
 
@@ -52,12 +52,16 @@ This guide walks through setting up a **CloudWatch Alarm** to monitor AWS Lambda
    - Select **Email** as the protocol.
    - Enter your **email address** where you want to receive notifications.
 4. Click **Create Subscription**.
-!['SNS Topic Subscription Creation'](/docs/Lab%201%20CloudWatch%20+%20SNS/img/SNSTopicSubscriptionCreation.png)
+
+![SNS Topic Subscription Creation](/docs/Lab%201%20CloudWatch%20+%20SNS/img/SNSTopicSubscriptionCreation.png)
+
 5. The status of the subscription will be **Pending**. Go to your email and confirm the subscription.
-!['SNS Topic Subscription Pending'](/docs/Lab%201%20CloudWatch%20+%20SNS/img/SNSTopicSubscriptionPending.png)
-!['SNS Topic Subscription Pending'](/docs/Lab%201%20CloudWatch%20+%20SNS/img/SNSTopicSubscriptionEmailConfirm.png)
+
+![SNS Topic Subscription Pending](/docs/Lab%201%20CloudWatch%20+%20SNS/img/SNSTopicSubscriptionPending.png)
+
 6. After confirmation, the status will change to **Confirmed**.
-!['SNS Topic Subscription Success'](/docs/Lab%201%20CloudWatch%20+%20SNS/img/SNSTopicSubscriptionSuccess.png)
+
+![SNS Topic Subscription Success](/docs/Lab%201%20CloudWatch%20+%20SNS/img/SNSTopicSubscriptionSuccess.png)
 
 ---
 
@@ -65,13 +69,17 @@ This guide walks through setting up a **CloudWatch Alarm** to monitor AWS Lambda
 
 1. Return to your Lambda function, and go to the **Code** tab.
 2. Click the dropdown next to the **Test** button, then select **Configure Test Event**.
-!['Lambda Function Event Config'](/docs/Lab%201%20CloudWatch%20+%20SNS/img/lambdaFunctionEventConfigurationDropdown.png)
+
+![Lambda Function Event Configuration Dropdown](/docs/Lab%201%20CloudWatch%20+%20SNS/img/lambdaFunctionEventConfigurationDropdown.png)
+
 3. Enter an **event name**.
 4. Click **Save**.
-!['SNS Topic Subscription Success'](/docs/Lab%201%20CloudWatch%20+%20SNS/img/lambdaFunctionEventConfigurationDetails.png)
+
+![Lambda Function Event Configuration Details](/docs/Lab%201%20CloudWatch%20+%20SNS/img/lambdaFunctionEventConfigurationDetails.png)
+
 5. Now, click **Test** to execute your Lambda function.
 
-    **Note**: The error metrics may take some time to reflect in the **Monitor** tab.
+**Note**: The error metrics may take some time to reflect in the **Monitor** tab.
 
 ---
 
@@ -86,11 +94,15 @@ This guide walks through setting up a **CloudWatch Alarm** to monitor AWS Lambda
 7. Click **Select Metric**.
 8. In the **Specify Metric and Conditions** section:
    - In the **Statistics** field, change the default **Average** to **Maximum**.
-   !['CloudWatch Metric Statistics'](/docs/Lab%201%20CloudWatch%20+%20SNS/img/cloudWatchMetricStats.png)
+
+   ![CloudWatch Metric Statistics](/docs/Lab%201%20CloudWatch%20+%20SNS/img/cloudWatchMetricStats.png)
+
    - In the **Conditions** section, set the threshold type to **Static**.
    - Under **Whenever Error Count is**, select **Greater Than or Equal to**.
    - Set the value to `1`.
-   !['CloudWatch Metric Conditions'](/docs/Lab%201%20CloudWatch%20+%20SNS/img/cloudWatchMetricConditions.png)
+
+   ![CloudWatch Metric Conditions](/docs/Lab%201%20CloudWatch%20+%20SNS/img/cloudWatchMetricConditions.png)
+
 9. Click **Next**.
 
 ---
@@ -102,7 +114,8 @@ This guide walks through setting up a **CloudWatch Alarm** to monitor AWS Lambda
 3. Choose the SNS topic you created earlier.
 4. The email endpoint you provided will appear in the notification settings.
 5. Click **Next**.
-!['CloudWatch Metric Notifications'](/docs/Lab%201%20CloudWatch%20+%20SNS/img/cloudWatchMetricNotifications.png)
+
+![CloudWatch Metric Notifications](/docs/Lab%201%20CloudWatch%20+%20SNS/img/cloudWatchMetricNotifications.png)
 
 ---
 
@@ -110,7 +123,8 @@ This guide walks through setting up a **CloudWatch Alarm** to monitor AWS Lambda
 
 1. Enter a name for your alarm.
 2. Click **Next**, then **Create Alarm**.
-!['CloudWatch Alarm InsufficientData'](/docs/Lab%201%20CloudWatch%20+%20SNS/img/cloudWatchAlarmInsufficientData.png)
+
+![CloudWatch Alarm Creation](/docs/Lab%201%20CloudWatch%20+%20SNS/img/cloudWatchAlarmInsufficientData.png)
 
 ---
 
@@ -127,20 +141,21 @@ This guide walks through setting up a **CloudWatch Alarm** to monitor AWS Lambda
 
 1. Go back to the **CloudWatch** service.
 2. Check the state of your alarm, which will be set to **In Alarm** if errors were detected.
-    !['CloudWatch Alarm InsufficientData'](/docs/Lab%201%20CloudWatch%20+%20SNS/img/cloudWatchAlarmInAlarm.png)
 
-    **Note**: If the alarm state does not change immediately, wait a few minutes, as it may take time to reflect the new state.
+![CloudWatch Alarm In Alarm](/docs/Lab%201%20CloudWatch%20+%20SNS/img/cloudWatchAlarmInAlarm.png)
+
+**Note**: If the alarm state does not change immediately, wait a few minutes, as it may take time to reflect the new state.
 
 ---
 
 ### Step 11: Receive SNS Email Notification
 
-Once the alarm state changes to **In Alarm**, you should receive an email notification at the email address you provided during the SNS subscription setup. 
+Once the alarm state changes to **In Alarm**, you should receive an email notification at the email address you provided during the SNS subscription setup.
 
-!['CloudWatch Alarm InsufficientData'](/docs/Lab%201%20CloudWatch%20+%20SNS/img/emailReceived.png)
+![SNS Email Received](/docs/Lab%201%20CloudWatch%20+%20SNS/img/emailReceived.png)
 
 ---
 
 ### Conclusion
 
-By following these steps, you’ve successfully configured a CloudWatch Alarm for Lambda errors and set up SNS to notify you via email when the alarm is triggered.
+By following these steps, you have successfully configured a CloudWatch Alarm for Lambda errors and set up SNS to notify you via email when the alarm is triggered.
