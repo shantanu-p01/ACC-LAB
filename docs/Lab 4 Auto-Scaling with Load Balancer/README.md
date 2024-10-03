@@ -1,4 +1,4 @@
-## Lab 4 Auto-Scaling with Load Balancer
+## Lab 4: Auto-Scaling with Load Balancer
 
 ### 1. Go to EC2 Service
 

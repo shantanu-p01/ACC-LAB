@@ -1,4 +1,4 @@
-### AWS CloudTrail with CloudWatch and SNS – Detailed Step-by-Step Guide
+### Lab 2: AWS CloudTrail with CloudWatch and SNS – Detailed Step-by-Step Guide
 
 ---
 
@@ -9,14 +9,16 @@
    
 2. **Create a New Bucket**:
    - Click on **Create Bucket**.
-   - Give your bucket a name (e.g., `cloudtrail-logs-bucket`).
-   - Choose the region where your bucket will be created.
+   - Give your bucket a name (e.g., `acc-ty-1113`).
+   ![BucketName](/docs/Lab%202%20CloudTrail/img/BucketName.png)
    
 3. **Enable Bucket Versioning**:
    - In the **Bucket Versioning** section, enable versioning. This ensures that multiple versions of logs are retained.
+   ![BucketVersioning](/docs/Lab%202%20CloudTrail/img/BucketVersioning.png)
    
 4. **Complete Bucket Creation**:
    - Keep all other settings at default, and click **Create Bucket** to finish.
+   ![BucketCreatedSuccessfully](/docs/Lab%202%20CloudTrail/img/BucketCreatedSuccessfully.png)
 
 ---
 
@@ -26,12 +28,13 @@
    - Navigate to [AWS CloudTrail Console](https://console.aws.amazon.com/cloudtrail/).
 
 2. **Create a New Trail**:
-   - On the left menu, click on **Trails**.
+   - On the left side-bar, click on **Trails**.
    - Click **Create Trail** to begin the setup process.
    
 3. **Configure the Trail**:
-   - **Trail Name**: Give a meaningful name to your trail (e.g., `CloudTrail-Monitor`).
+   - **Trail Name**: Give a name to your trail (e.g., `ACC-TY-1113-Trail`).
    - **Storage Location**: Choose the S3 bucket you created earlier (`cloudtrail-logs-bucket`).
+   ![TrailNameAndS3](/docs/Lab%202%20CloudTrail/img/TrailNameAndS3.png)
 
 ---
 
@@ -39,15 +42,17 @@
 
 1. **Configure AWS KMS for Encryption**:
    - In the **Customer Managed Key** section, select **New** to create a new AWS KMS key.
-   - Give a name to your KMS key (e.g., `CloudTrailKMSKey`).
+   - Give a name to your KMS key (e.g., `ACC-TY-1113-KMS-KEY`).
+   ![TrailNew-KMS](/docs/Lab%202%20CloudTrail/img/TrailNew-KMS.png)
 
 2. **Enable SNS Notifications**:
-   - Tick the option for **SNS Notification Delivery**.
+   - In Additional Settings, Tick the option for **SNS Notification Delivery**.
    - Click **Create New SNS Topic** to create a new SNS topic.
 
 3. **Create a New SNS Topic**:
-   - Give the SNS topic a name (e.g., `CloudTrailNotifications`).
+   - Give the SNS topic a name (e.g., `ACC-TY-1113-CloudTrailSNSTopic`).
    - Ensure **CloudWatch Logs** is enabled for better monitoring.
+   ![TrailNew-SNSTopic](/docs/Lab%202%20CloudTrail/img/TrailNew-SNSTopic.png)
 
 ---
 
@@ -55,8 +60,9 @@
 
 1. **Create a New IAM Role**:
    - During the trail creation process, you'll be prompted to create a new IAM Role.
-   - Give it a name (e.g., `CloudTrailIAMRole`).
+   - Give it a name (e.g., `ACC-TY-1113-IAMRole`).
    - Click **Next** to proceed.
+   ![TrailNew-SNSTopic](/docs/Lab%202%20CloudTrail/img/TrailNew-CloudWatch.png)
 
 ---
 
@@ -64,9 +70,11 @@
 
 1. **Select Management and Data Events**:
    - Enable logging for **Management Events**, **Data Events**, and **Insights Events**.
+   ![TrailEventsSelection](/docs/Lab%202%20CloudTrail/img/TrailEventsSelection.png)
    
 2. **Select Data Event Types**:
    - Under **Data Event Type**, choose **S3** to monitor bucket activities.
+   ![TrailDataEvents-S3](/docs/Lab%202%20CloudTrail/img/TrailDataEvents-S3.png)
 
 3. **Complete the Trail Setup**:
    - Click **Next**, review the settings, and then select **Create Trail**.
@@ -79,16 +87,19 @@
    - Navigate to [AWS SNS Console](https://console.aws.amazon.com/sns/).
    
 2. **Select the SNS Topic**:
-   - In the left menu, click on **Topics**.
-   - Select the SNS topic you created earlier (e.g., `CloudTrailNotifications`).
+   - In the left side-bar, click on **Topics**.
+   - Select the SNS topic you created earlier (e.g., `ACC-TY-1113-CloudTrailSNSTopic`).
 
 3. **Create an Email Subscription**:
    - Click **Create Subscription**.
    - **Protocol**: Select **Email**.
    - **Endpoint**: Enter your email address to receive notifications.
+   ![SNS-SubscriptionCreation](/docs/Lab%202%20CloudTrail/img/SNS-SubscriptionCreation.png)
 
 4. **Confirm the Subscription**:
    - Check your email and click the confirmation link to activate the subscription.
+   ![SNS-EMailConfirm](/docs/Lab%202%20CloudTrail/img/SNS-EMailConfirm.png)
+   ![SNS-SubscriptionConfirmed](/docs/Lab%202%20CloudTrail/img/SNS-SubscriptionConfirmed.png)
 
 ---
 
@@ -98,25 +109,32 @@
    - Navigate to [AWS CloudWatch Console](https://console.aws.amazon.com/cloudwatch/).
    
 2. **Select the Log Group**:
-   - In the left menu, select **Logs**.
+   - In the left side-bar, select **Logs**.
    - Find the log group associated with your CloudTrail trail.
+   ![CloudWatch-LogGroup](/docs/Lab%202%20CloudTrail/img/CloudWatch-LogGroup.png)
 
 3. **Set Up a CloudWatch Alarm**:
-   - Click **Actions** and then **Create Alarm**.
-   - Select the metric for **Time Anomaly** and set the anomaly detection time to **5 minutes**.
+   - Select the Log Group then Click on **Actions** and then **Anomaly Detection** then Click on **Configure**.
+   ![CloudWatch-LogGroup-AnomalySetup](/docs/Lab%202%20CloudTrail/img/CloudWatch-LogGroup-AnomalySetup.png)
+   - In **Primary Configuration** select **Evaluation Frequency** as **5 minutes**
+   ![CloudWatch-LogGroup-Anomaly5Min](/docs/Lab%202%20CloudTrail/img/CloudWatch-LogGroup-Anomaly5Min.png)
+   - Then Click on **Activate Anomaly Detection**
 
 ---
 
 ### **Step 8: Test the Setup**
 
 1. **Upload a File to the S3 Bucket**:
-   - Go to your S3 bucket (`cloudtrail-logs-bucket`) and upload a file.
+   - Go to your S3 bucket (`acc-ty-1113`) and upload a file.
+   ![S3-FileUpload](/docs/Lab%202%20CloudTrail/img/S3-FileUpload.png)
    
 2. **Check CloudWatch Logs**:
-   - After uploading the file, you should see new log entries in CloudWatch.
+   - After uploading the file, you should see new log entries in CloudTrail Event History.
+   ![Trail-LogsCheckup](/docs/Lab%202%20CloudTrail/img/Trail-LogsCheckup.png)
 
 3. **Receive SNS Notification**:
    - You will receive an email notification from SNS alerting you about the activity.
+   ![SNS-UploadAlertMessage](/docs/Lab%202%20CloudTrail/img/SNS-UploadAlertMessage.png)
 
 ---
 

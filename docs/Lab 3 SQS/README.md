@@ -1,4 +1,4 @@
-## Lab 3 SQS
+## Lab 3: SQS
 
 For a visual guide on this process, you can watch the video [here](https://hitohitonomis-my.sharepoint.com/:v:/g/personal/gawd_hitohitonomi_cloud/EY97hrjVIjZJsPFQMRm20KYB8Gehw6q_GHzF4MbFypiqmA?e=8kmIR6&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D).
 

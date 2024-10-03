@@ -1,4 +1,4 @@
-## Lab 5 Setting Up an RDS Instance, Connecting with MySQL Workbench, and Inserting Data into a Table
+## Lab 5: Setting Up an RDS Instance, Connecting with MySQL Workbench, and Inserting Data into a Table
 
 ### Step 1: Create a Database in RDS
 
