@@ -35,8 +35,8 @@
     #!/bin/bash
     sudo apt update -y && sudo apt upgrade -y && sudo apt install apache2 -y && sudo systemctl start apache2 && sudo systemctl enable apache2 && echo "<h1>This Message is from $(hostname -i)</h1>" > /var/www/html/index.html
     ```
-  - Click **Create Launch Template**
-- Go back to **Auto Scaling Configuration**, select our **Launch Template**, scroll down, then click on **Next**
+
+    ![LaunchTemplateConfig](/docs/Lab%204%20Auto-Scaling%20with%20Load%20Balancer/img/LaunchTemplateConfig.png)
 
 ### 4. Network Section
 - **Select Availability Zones and Subnets:** Select all available zones and subnets
@@ -51,6 +51,9 @@
   - **Create Target Group:** Port 80 (Automatically created when selecting from the dropdown)
   - **Health Checks:** Check the box to turn on Elastic Load Balancing health checks
 - Click **Next**
+
+**Image:** Load Balancer Configuration  
+**Image Name:** LoadBalancerConfig.png
 
 ### 6. Group Size Section
 - **Desired Capacity:** 1
@@ -67,6 +70,9 @@
   - Select the Security Group **Lab4-ApplicationLoadBalancer-Group**
   - Click **Save Changes**
 
+**Image:** Modify Load Balancer Security Group  
+**Image Name:** ModifyLoadBalancerSecurityGroup.png
+
 ### 8. Check EC2 Instances
 - **EC2 Instances:** It will show an instance running or being created
 - **DNS Name:** Once the Load Balancer is active, copy its DNS name into your browser in a new tab
@@ -80,6 +86,9 @@
 - **Target Value:** 30
 - Click **Create**
 
+**Image:** Create Dynamic Scaling Policy  
+**Image Name:** DynamicScalingPolicy.png
+
 ### 10. Check CloudWatch Alarms
 - Go to **CloudWatch Service > All Alarms**
 - You'll see alarms for scale-in and scale-out operations automatically created by the Auto Scaling Group.
@@ -92,15 +101,14 @@
     sudo apt install stress -y
     sudo stress --cpu 12 --timeout 240s
     ```
-    *(This command stresses the CPU of the instance for 240 seconds using 12 CPU workers)*
-- **Monitor Load:**
-  - Go to the **Auto Scaling Group** > **Monitoring** tab > **EC2** sub-tab to see the CPU load graph.
-  - The **CloudWatch Alarms** section will show an alarm state once the load is triggered.
 
 ### 12. Verify Scaling
-- A new EC2 instance will be created automatically. Go to the **Auto Scaling Group** > **Activity** section to see details about the newly created instance.
+- A new EC2 instance will be created automatically. Go to the **Auto Scaling Group > Activity** section to see details about the newly created instance.
 - Check the **Instance Management** section, where another instance will be shown.
 - **Refresh the Browser:** You will see different IP addresses from the new EC2 instances.
+
+**Image:** EC2 Instance Scaling  
+**Image Name:** EC2InstanceScaling.png
 
 ### 13. Delete Target Tracking Policy
 - In the **Dynamic Scaling Policies** section, delete the **Target Tracking Policy**.
@@ -115,11 +123,6 @@
   - **Whenever CPUUtilization is Greater than:** 30
   - **Give Alarm Name:** CPUUtilizationAlarm
   - Click **Create Alarm**
-- **Go Back to Auto Scaling Configuration:**
-  - **Refresh the Alarm Field**
-  - Select **CPUUtilizationAlarm**
-  - **Take Action:** Add 1
-  - Click **Create**
 
 ### 15. Set Desired Capacity
 - Go to the **Auto Scaling Group > Details Tab > Group Details Section**
