@@ -1,4 +1,4 @@
-### Lab 2: AWS CloudTrail with CloudWatch and SNS – Detailed Step-by-Step Guide
+### **Lab 2: AWS CloudTrail with CloudWatch and SNS – Detailed Step-by-Step Guide**
 
 ---
 
@@ -6,7 +6,7 @@
 
 1. **Open the S3 Management Console**:
    - Navigate to [AWS S3 Console](https://s3.console.aws.amazon.com/s3/).
-   
+
 2. **Create a New Bucket**:
    - Click on **Create Bucket**.
    - Give your bucket a name (e.g., `acc-ty-1113`).
@@ -30,7 +30,7 @@
 2. **Create a New Trail**:
    - On the left side-bar, click on **Trails**.
    - Click **Create Trail** to begin the setup process.
-   
+
 3. **Configure the Trail**:
    - **Trail Name**: Give a name to your trail (e.g., `ACC-TY-1113-Trail`).
    - **Storage Location**: Choose the S3 bucket you created earlier (`cloudtrail-logs-bucket`).
@@ -85,7 +85,7 @@
 
 1. **Open the SNS Management Console**:
    - Navigate to [AWS SNS Console](https://console.aws.amazon.com/sns/).
-   
+
 2. **Select the SNS Topic**:
    - In the left side-bar, click on **Topics**.
    - Select the SNS topic you created earlier (e.g., `ACC-TY-1113-CloudTrailSNSTopic`).
@@ -107,18 +107,18 @@
 
 1. **Open CloudWatch Console**:
    - Navigate to [AWS CloudWatch Console](https://console.aws.amazon.com/cloudwatch/).
-   
+
 2. **Select the Log Group**:
    - In the left side-bar, select **Logs**.
    - Find the log group associated with your CloudTrail trail.
    ![CloudWatch-LogGroup](/docs/Lab%202%20CloudTrail/img/CloudWatch-LogGroup.png)
 
 3. **Set Up a CloudWatch Alarm**:
-   - Select the Log Group then Click on **Actions** and then **Anomaly Detection** then Click on **Configure**.
+   - Select the Log Group, then Click on **Actions** and then **Anomaly Detection**.
    ![CloudWatch-LogGroup-AnomalySetup](/docs/Lab%202%20CloudTrail/img/CloudWatch-LogGroup-AnomalySetup.png)
-   - In **Primary Configuration** select **Evaluation Frequency** as **5 minutes**
+   - In **Primary Configuration** select **Evaluation Frequency** as **5 minutes**.
    ![CloudWatch-LogGroup-Anomaly5Min](/docs/Lab%202%20CloudTrail/img/CloudWatch-LogGroup-Anomaly5Min.png)
-   - Then Click on **Activate Anomaly Detection**
+   - Then Click on **Activate Anomaly Detection**.
 
 ---
 
@@ -127,7 +127,7 @@
 1. **Upload a File to the S3 Bucket**:
    - Go to your S3 bucket (`acc-ty-1113`) and upload a file.
    ![S3-FileUpload](/docs/Lab%202%20CloudTrail/img/S3-FileUpload.png)
-   
+
 2. **Check CloudWatch Logs**:
    - After uploading the file, you should see new log entries in CloudTrail Event History.
    ![Trail-LogsCheckup](/docs/Lab%202%20CloudTrail/img/Trail-LogsCheckup.png)
@@ -138,4 +138,4 @@
 
 ---
 
-### **and you did it!**
+### **And You're Done!**
