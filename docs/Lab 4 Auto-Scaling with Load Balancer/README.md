@@ -8,7 +8,7 @@
 - **Name:** Lab4-ApplicationLoadBalancer-Group-1113
 - **Inbound Rules:**
   - **Type:** HTTP
-  - **Source:** Anywhere-IPV4
+  - **Source:** Anywhere-IPv4
   ![ALB-SG-1113](/docs/Lab%204%20Auto-Scaling%20with%20Load%20Balancer/img/ALB-SG-GROUP-1113.png)
 - Click **Create Security Group**
 
@@ -18,7 +18,7 @@
 - **Inbound Rules:**
   - **1.** 
     - **Type:** SSH
-    - **Source:** Anywhere-IPV4
+    - **Source:** Anywhere-IPv4
     ![AS-SG-1113-1](/docs/Lab%204%20Auto-Scaling%20with%20Load%20Balancer/img/AS-SG-GROUP1-1113.png)
   - **2.** 
     - **Type:** All TCP
@@ -40,7 +40,7 @@
     ![LaunchTemplateKeyPair](/docs/Lab%204%20Auto-Scaling%20with%20Load%20Balancer/img/LaunchTemplateKeyPair.png)
   - **In Network Settings:** Select the security group we created named **Lab4-AutoScaling-Group-1113**
     ![LaunchTemplateNetworkSettings](/docs/Lab%204%20Auto-Scaling%20with%20Load%20Balancer/img/LaunchTemplateNetworkSettings.png)
-  - **User Data:** In Additional Settings scroll down to bottom and enter the following in User Data text area field
+  - **User Data:** In Additional Settings, scroll down to the bottom and enter the following in the User Data text area field:
     ```bash
     #!/bin/bash
     sudo apt update -y
@@ -53,18 +53,17 @@
     ![LaunchTemplateUserData](/docs/Lab%204%20Auto-Scaling%20with%20Load%20Balancer/img/LaunchTemplateUserData.png)
 - Click on **Create Launch Template**
 
-### 4. Select Launch Template
-- Then Navigate back to the Auto-Scaling Group creation
-- There Select the Launch Template we just created
+### 4. Select Launch Template and Configure Network
+- Navigate back to the Auto-Scaling Group creation
+- Select the Launch Template we just created
   ![ASG-Template](/docs/Lab%204%20Auto-Scaling%20with%20Load%20Balancer/img/ASG-Template.png)
 - Click **Next**
-
-### 4. Network Section
-- **Select Availability Zones and Subnets:** Select all available zones and subnets
-  ![ASG-NetworkSection](/docs/Lab%204%20Auto-Scaling%20with%20Load%20Balancer/img/ASG-NetworkSection.png)
+- **Network Section:**
+  - **Select Availability Zones and Subnets:** Select all available zones and subnets
+    ![ASG-NetworkSection](/docs/Lab%204%20Auto-Scaling%20with%20Load%20Balancer/img/ASG-NetworkSection.png)
 - Click **Next**
 
-### 5. Load Balancing Section
+### 5. Configure Load Balancing
 - **Select Load Balancer Type:** Attach to a New Load Balancer
   ![ASG-LoadBalancerSelection](/docs/Lab%204%20Auto-Scaling%20with%20Load%20Balancer/img/ASG-LoadBalancerSelection.png)
 - **Load Balancer Type:** Application Load Balancer
@@ -78,7 +77,7 @@
   ![ASG-LoadBalancerHealthChecks](/docs/Lab%204%20Auto-Scaling%20with%20Load%20Balancer/img/ASG-LoadBalancerHealthChecks.png)
 - Click **Next**
 
-### 6. Group Size Section
+### 6. Configure Group Size
 - **Desired Capacity:** 1
   ![ASG-GroupSizeDesiredCapacity](/docs/Lab%204%20Auto-Scaling%20with%20Load%20Balancer/img/ASG-GroupSizeDesiredCapacity.png)
 - **Minimum Capacity:** 1
@@ -103,10 +102,10 @@
   ![LB-DNS-Check](/docs/Lab%204%20Auto-Scaling%20with%20Load%20Balancer/img/LB-DNS-Check.png)
 - You should see a message from your EC2 instance displaying its IP address.
   ![LB-URL-Worked](/docs/Lab%204%20Auto-Scaling%20with%20Load%20Balancer/img/LB-URL-Worked.png)
-NOTE: Don't forget to remove HTTPS from the url.
+NOTE: Don't forget to remove HTTPS from the URL.
 
-### 9. Dynamic Scaling Policy
-- Go to the **Auto Scaling Group** which we have created, select the **Automatic Scaling** tab, and click on **Create Dynamic Scaling Policy**
+### 9. Create Dynamic Scaling Policy
+- Go to the **Auto Scaling Group** we have created, select the **Automatic Scaling** tab, and click on **Create Dynamic Scaling Policy**
   ![AS-CreateDynamicPolicy](/docs/Lab%204%20Auto-Scaling%20with%20Load%20Balancer/img/AS-CreateDynamicPolicy.png)
 - **Policy Type:** Target Tracking Policy
 - **Policy Name:** Target Tracking Policy
@@ -139,9 +138,9 @@ NOTE: Don't forget to remove HTTPS from the url.
   ![LB-URL-NewInstance](/docs/Lab%204%20Auto-Scaling%20with%20Load%20Balancer/img/LB-URL-NewInstance.png)
 
 ### 13. Delete Target Tracking Policy
-- Navigate back to **Auto Scaling Group** which we have created, select the **Auto Scaling** Tab there select all the **Dynamic scaling policies**, and click on **Actions** then click on **Delete**
+- Navigate back to the **Auto Scaling Group** we have created, select the **Automatic Scaling** Tab
+- Select all the **Dynamic scaling policies**, click on **Actions**, then click on **Delete**
   ![ASG-DeletingDynamicScalingPolicies](/docs/Lab%204%20Auto-Scaling%20with%20Load%20Balancer/img/ASG-DeletingDynamicScalingPolicies.png)
-- In the **Dynamic Scaling Policies** section, delete the **Target Tracking Policy**.
 
 ### 14. Create Simple Scaling Policy
 - **Go to Dynamic Scaling Policy Section:** Click on **Create Dynamic Scaling Policy**
@@ -163,10 +162,11 @@ NOTE: Don't forget to remove HTTPS from the url.
   ![NewCloudWatch-SNS-Topic](/docs/Lab%204%20Auto-Scaling%20with%20Load%20Balancer/img/NewCloudWatch-SNS-Topic.png)
 - Then click on **Create Topic**
   ![NewCloudWatch-SNS-Topic-Created](/docs/Lab%204%20Auto-Scaling%20with%20Load%20Balancer/img/NewCloudWatch-SNS-Topic-Created.png)
-- Then click **Next** and **Enter Alarm Name** eg.
+- Then click **Next** and **Enter Alarm Name** e.g.,
   ![NewCloudWatch-AlarmName](/docs/Lab%204%20Auto-Scaling%20with%20Load%20Balancer/img/NewCloudWatch-AlarmName.png)
-- Then click **Next** and Review all the Configurations and click on **Create Alarm**
-- Then Navigate back to the **Auto Scaling Group** Page's **Create Dynamic Scaling Policy** Section and select the **CloudWatch alarm** we just created
+- Then click **Next**, review all the Configurations, and click on **Create Alarm**
+- Navigate back to the **Auto Scaling Group** Page's **Create Dynamic Scaling Policy** Section and select the **CloudWatch alarm** we just created
+- In **Take the action** field update the value to **1**
   ![ASG-SimpleScalingAlarmSelection](/docs/Lab%204%20Auto-Scaling%20with%20Load%20Balancer/img/ASG-SimpleScalingAlarmSelection.png)
 - Then click on **Create**
 
@@ -185,7 +185,7 @@ NOTE: Don't forget to remove HTTPS from the url.
   ![AWS-CloudShell-Command](/docs/Lab%204%20Auto-Scaling%20with%20Load%20Balancer/img/AWS-CloudShell-Command.png)
 
 ### 17. Verify Alarm
-- Go to **CloudWatch Service > Alarms** and check that the alarm is **In Alarm** state.
+- Go to **CloudWatch Service > Alarms** and check that the alarm is in the **In Alarm** state.
   ![NewCloudWatch-InAlarmState](/docs/Lab%204%20Auto-Scaling%20with%20Load%20Balancer/img/NewCloudWatch-InAlarmState.png)
 - A new EC2 instance will be created, as shown in the **Auto Scaling Group > Activity** section.
   ![NewCloudWatchAlarm-NewEC2-Launched](/docs/Lab%204%20Auto-Scaling%20with%20Load%20Balancer/img/NewCloudWatchAlarm-NewEC2-Launched.png)
@@ -196,4 +196,4 @@ NOTE: Don't forget to remove HTTPS from the url.
   ![EC2-SimpleScaling2URL](/docs/Lab%204%20Auto-Scaling%20with%20Load%20Balancer/img/EC2-SimpleScaling2URL.png)
 
 ### Conclusion
-- You've successfully created an Auto Scaling Group and configured scaling policies for both scale-out and scale-in operations.
+You've successfully created an Auto Scaling Group and configured scaling policies for both scale-out and scale-in operations.
