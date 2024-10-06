@@ -5,7 +5,7 @@
 ### **Step 1: Create an S3 Bucket for CloudTrail Logs**
 
 1. **Open the S3 Management Console**:
-   - Navigate to [AWS S3 Console](https://s3.console.aws.amazon.com/s3/).
+   - Navigate to AWS S3 Console.
 
 2. **Create a New Bucket**:
    - Click on **Create Bucket**.
@@ -25,7 +25,7 @@
 ### **Step 2: Set Up AWS CloudTrail**
 
 1. **Open the CloudTrail Console**:
-   - Navigate to [AWS CloudTrail Console](https://console.aws.amazon.com/cloudtrail/).
+   - Navigate to AWS CloudTrail Console.
 
 2. **Create a New Trail**:
    - On the left side-bar, click on **Trails**.
@@ -84,7 +84,7 @@
 ### **Step 6: Set Up SNS Notifications**
 
 1. **Open the SNS Management Console**:
-   - Navigate to [AWS SNS Console](https://console.aws.amazon.com/sns/).
+   - Navigate to AWS SNS Console.
 
 2. **Select the SNS Topic**:
    - In the left side-bar, click on **Topics**.
@@ -106,7 +106,7 @@
 ### **Step 7: Configure CloudWatch Logs for Monitoring**
 
 1. **Open CloudWatch Console**:
-   - Navigate to [AWS CloudWatch Console](https://console.aws.amazon.com/cloudwatch/).
+   - Navigate to AWS CloudWatch Console.
 
 2. **Select the Log Group**:
    - In the left side-bar, select **Logs**.
