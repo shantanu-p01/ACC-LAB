@@ -31,7 +31,7 @@
 
 1. Go to the user you just created.
 2. Click on **Create access key**.
-   ![IAMUserAccessKeyCreation](/docs/Lab%209%20IAM%20User%20S3%20Access/img/IAMUserAccessKeyCreation1.png)
+   ![IAMUserAccessKeyCreation](/docs/Lab%209%20IAM%20User%20S3%20Access/img/IAMUserAccessKeyCreation.png)
 3. Select **Command Line Interface (CLI)** as the use case.
    ![IAMAccessKeyUseCase](/docs/Lab%209%20IAM%20User%20S3%20Access/img/IAMAccessKeyUseCase.png)
 4. Scroll down, check the confirmation box, and click **Next**.
