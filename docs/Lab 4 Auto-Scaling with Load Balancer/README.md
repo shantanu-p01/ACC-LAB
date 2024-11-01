@@ -166,8 +166,8 @@ NOTE: Don't forget to remove HTTPS from the URL.
   ![NewCloudWatch-AlarmName](/docs/Lab%204%20Auto-Scaling%20with%20Load%20Balancer/img/NewCloudWatch-AlarmName.png)
 - Then click **Next**, review all the Configurations, and click on **Create Alarm**
 - Navigate back to the **Auto Scaling Group** Page's **Create Dynamic Scaling Policy** Section and select the **CloudWatch alarm** we just created
-- In **Take the action** field update the value to **1**
   ![ASG-SimpleScalingAlarmSelection](/docs/Lab%204%20Auto-Scaling%20with%20Load%20Balancer/img/ASG-SimpleScalingAlarmSelection.png)
+- In **Take the action** field update the value to **1**
 - Then click on **Create**
 
 ### 15. Set Desired Capacity
