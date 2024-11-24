@@ -11,3 +11,4 @@
 9. [AWS IAM User S3 Access](/docs/Lab%209%20IAM%20User%20S3%20Access/README.md)
 10. [AWS IAM User Custom Policy](/docs/Lab%2010%20IAM%20User%20Custom%20Policy/README.md)
 11. [AWS S3 Object Encryption with AWS KMS](/docs/Lab%2011%20IAM%20S3%20Object%20Encryption%20with%20AWS%20KMS/README.md)
+12. [Accessing S3 Object using AWS CloudFront](/docs/Lab%2012%20Access%20S3%20Objects%20using%20AWS%20CloudFront/README.md)
